@@ -1,23 +1,24 @@
+/* eslint-disable no-undef */
 const todoList = require("../todo");
 let today = new Date().toLocaleDateString("en-CA");
 
-const { all, markAsComplete, add, overdue, dueToday, dueLater } = todoList();
-/* eslint-disable no-undef */
-describe("Todo list getting Tested", () => {
+const { all, mas, add, od, dt, dl } = todoList();
+
+describe("Test", () => {
   beforeAll(() => {
     add({
-      title: "DAA algorithums",
+      title: "SUB1",
       completed: false,
       dueDate: new Date().toLocaleDateString("en-CA"),
     });
   });
 
-  test("Adding new todo in the list", () => {
-    // expect(all.length).toBe(0);
+  test("Adds", () => {
+    
     let length = all.length;
 
     add({
-      title: "node js process of learning",
+      title: "Sample",
       completed: false,
       dueDate: new Date().toLocaleDateString("en-CA"),
     });
@@ -25,14 +26,14 @@ describe("Todo list getting Tested", () => {
     expect(all.length).toBe(length + 1);
   });
 
-  test("Marking todo as completed", () => {
+  test("Complete", () => {
     expect(all[0].completed).toBe(false);
-    markAsComplete(0);
+    mas(0);
     expect(all[0].completed).toBe(true);
   });
 
-  test("retrieving all todos that are overdue", () => {
-    let listOfTodos = overdue();
+  test("getting the ods", () => {
+    let listOfTodos = od();
 
     expect(
       listOfTodos.every((todo) => {
@@ -41,8 +42,8 @@ describe("Todo list getting Tested", () => {
     ).toBe(true);
   });
 
-  test("retrieving all todos that are dueToday", () => {
-    let listOfTodos = dueToday();
+  test("getting the dts", () => {
+    let listOfTodos = dt();
 
     expect(
       listOfTodos.every((todo) => {
@@ -51,8 +52,8 @@ describe("Todo list getting Tested", () => {
     ).toBe(true);
   });
 
-  test("retrieving all todos that are dueLater", () => {
-    let listOfTodos = dueLater();
+  test("rgetting the dl's", () => {
+    let listOfTodos = dl();
 
     expect(
       listOfTodos.every((todo) => {
